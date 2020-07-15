@@ -21,8 +21,8 @@ export default function App() {
           const response = await axios.get(
             `https://rickandmortyapi.com/api/character/?page=${page}`
           );
+          if (page === 1) setMaxCharacters(response.data.info.count);
           tempResults = tempResults.concat(response.data.results);
-          setMaxCharacters(response.data.info.count);
           setResults(tempResults);
           setError('');
           page++;
